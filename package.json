@@ -1,0 +1,25 @@
+{
+  "name": "template-engine-employee-summary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  },
+  "devDependencies": {
+    "jest": "^26.2.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewdalba/Template-Engine-Employee-Summary.git"
+  },
+  "author": "Andrew D'Alba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrewdalba/Template-Engine-Employee-Summary/issues"
+  },
+  "homepage": "https://github.com/andrewdalba/Template-Engine-Employee-Summary#readme"
+}
