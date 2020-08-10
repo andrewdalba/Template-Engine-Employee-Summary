@@ -15,10 +15,10 @@ describe("Team", () => {
     describe("Name property suite", () => {
         it("should take a name and save it to something alled name on the object", () => {
             // setup
-            let name = "Engineer";
+            let name = "engineer";
             // Execution
-            let team = new Team(name);
-            let output = team.name;
+            let engineer = new Team(name);
+            let output = engineer.name;
 
             // Evaluate
             expect(output).toEqual(name);
@@ -29,15 +29,20 @@ describe("Team", () => {
             let name = "";
             let error = "name is too short.";
             const mock = jest.spyOn(console, "log");
-            mock.mockImplementation(() => { });
+            mock.mockImplementation( () => {});
 
             // Execution
-            let team = new Team(name);
-
+            try{
+                let engineer = new Team(name);
+            }
+            catch(e){
+                // do nothing
+            }
+            
             // Evaluate
             expect(mock).toBeCalledWith(error);
 
-        })
+        });
     });
 });
 

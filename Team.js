@@ -1,7 +1,11 @@
+
 class Team {
-    constructor(name){
+    constructor(name) {
         this.name = name;
-        
+        if (this.name.length < 1) {
+            console.log("Name is too short.");
+            throw "Error on name length";
+        }
     }
 }
 
