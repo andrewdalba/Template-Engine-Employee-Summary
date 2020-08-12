@@ -1,6 +1,4 @@
 const Team = require("../Team.js");
-const { italic } = require("ansi-styles");
-const expectExport = require("expect");
 
 describe("Team", () => {
     // describe("Test framework", () => {
@@ -11,29 +9,28 @@ describe("Team", () => {
     //         expect(true).toEqual(true);
     //     });
     // });
-
-    describe("Name property suite", () => {
-        it("should take a name and save it to something alled name on the object", () => {
+    describe("Name Property Suite", () => {
+        it("should take a name and save it to something called name on the object", () => {
             // setup
-            let name = "engineer";
-            // Execution
-            let engineer = new Team(name);
-            let output = engineer.name;
+            let name = "Cool Guys Engineering";
 
+            // execution
+            let seahawks = new Team(name);
+            let output = seahawks.name;
             // Evaluate
             expect(output).toEqual(name);
+            
         });
         it("should not accept an empty name and console log an error", () => {
-            // need a mock for console.log
+            //  need a mock for console.log
             // setup
             let name = "";
-            let error = "name is too short.";
+            let error = "Name is too short.";
             const mock = jest.spyOn(console, "log");
             mock.mockImplementation( () => {});
-
-            // Execution
+            // execution
             try{
-                let engineer = new Team(name);
+               let coolGuys = new Team(name); 
             }
             catch(e){
                 // do nothing
@@ -41,8 +38,27 @@ describe("Team", () => {
             
             // Evaluate
             expect(mock).toBeCalledWith(error);
-
         });
+
+        // it("should not accept a name other than 'Engineer', 'Intern', or 'Manager' or an empty name and console log an error", () => {
+        //     //  need a mock for console.log
+        //     // setup
+        //     let name = "not engineer";
+        //     let error = "Name is too short or name is incorrect type -- name must be 'Engineer', 'Intern', or 'Manager'.";
+        //     const mock = jest.spyOn(console, "log");
+        //     mock.mockImplementation( () => {});
+        //     // execution
+        //     try{
+        //        let engineer = new Team(name); 
+        //     }
+        //     catch(e){
+        //         // do nothing
+        //     }
+            
+        //     // Evaluate
+        //     expect(mock).toBeCalledWith(error);
+        // });
+
     });
 });
 

@@ -2,7 +2,7 @@
   "name": "template-engine-employee-summary",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "dependencies": {
     "inquirer": "^7.3.3"
   },
@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/andrewdalba/Template-Engine-Employee-Summary/issues"
   },
-  "homepage": "https://github.com/andrewdalba/Template-Engine-Employee-Summary#readme"
+  "homepage": "https://github.com/andrewdalba/Template-Engine-Employee-Summary#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
