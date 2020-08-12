@@ -15,10 +15,9 @@ describe("HtmlFileWriter", () => {
             // We want to test that the execution section of our code
             // creates a file with the exact same (file, data, options) that we specified
 
-
-            mock.implementation( () => {});
+            mock.mockImplementation( () => {});
            
-            const name = "seahawks Engineering" // to be set as the title of the file we are writing. This will not be tested in the "toBeCalledWith" function
+            const name = "Seahawks Engineering" // to be set as the title of the file we are writing. This will not be tested in the "toBeCalledWith" function
             const templateHtml = '<html><head></head><body><h1><!-- heading --></h1></body></html>'    //this can be an external file the same way the README generator was (I think)
            
             // This will be the (file) parameter in the writeFileSync() function
@@ -38,7 +37,7 @@ describe("HtmlFileWriter", () => {
 
             // evaluate
             // use jest to test that the variable "mock" is equal to
-            expect(mock).toBeCalledWith(fileName, fileHtml, 'utf8'); 
+            expect(mock).toBeCalledWith(fileName, fileHtml, "utf8"); 
         });
     });
 });

@@ -1,4 +1,3 @@
-
 // somehow we have to ask questions about the team
 
 // create the team based on the data

@@ -1,6 +1,6 @@
-const Manager = require("./lib/manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
+// const Manager = require("./lib/manager");
+// const Engineer = require("./lib/Engineer");
+// const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
