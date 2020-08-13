@@ -1,4 +1,4 @@
-const Team = require("../Team.js");
+const Team = require("../lib/Team.js");
 
 describe("Team", () => {
     // describe("Test framework", () => {

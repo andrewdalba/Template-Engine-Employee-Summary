@@ -1,4 +1,4 @@
-const TeamMember = require("../teammember.js");
+const TeamMember = require("..//lib/teammember.js");
 
 // test suits here
 describe("TeamMember", () => {
