@@ -18,30 +18,39 @@ let isEngineer = false;
 function inputEmployeeInfo() {
     let employeeData = {};
     inquirer.prompt(questions).then(response => {
-        if (response.employeePosition === "Manager") {
+        if (response.role === "Manager") {
             employeeData = new Manager(response.employeeName, response.employeeID, response.email, response.officeNumber);
-            isManager = true
-        } else if (response.employeePosition === "Engineer") {
-            employeeData = new Engineer(response.employeeName, response.employeeID, response.email, response.gitHubAddress);
+            isManager = true;
+        } 
+        else if (response.role === "Engineer") {
+            employeeData = new Engineer(response.employeeName, response.employeeID, response.email, response.gitHubUsername);
             isEngineer = true;
-        } else {
+        } 
+        else { //if not manager and not engineer then employee must be intern
             employeeData = new Intern(response.employeeName, response.employeeID, response.email, response.school);
         }
         employees.push(employeeData);
         if (response.nextEmployee) {
+            //if there is another employee then ask questions again
             inputEmployeeInfo();
-        } else {
-
+        } 
+        else {
+            //there must be at least a manager or an engineer on the team
             if (isManager === false) {
-                console.log("There is no manager on team");
+                console.log("No Managers");
                 inputEmployeeInfo();
-            } else if (isEngineer === false) {
-                console.log("There is no engineers on team");
+            } 
+            else if (isEngineer === false) {
+                console.log("No Engineers");
                 inputEmployeeInfo();
-            } else {
+            } 
+            // if at least a manager and/or an engineer role has been filled and 
+            // there are no other employees on the team then write the file
+            else {
+                
                 fs.writeFile(outputPath, renderHtml(employees, teamName), (er) => {
                     if (er) return console.log(er);
-                    console.log(`team.html completed...Look for ${outputPath}`);
+                    console.log(`team.html has been created at: ${outputPath}`);
                 });
                 return
             }
