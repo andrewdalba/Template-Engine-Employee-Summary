@@ -5,12 +5,73 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const renderHtml = require("./lib/HtmlFileWriter.js");
+const questions = require("./lib/questions.js");
 
-
-
-
+const outputDirect = path.resolve(__dirname, "output");
+const outputPath = path.join(outputDirect, "team.html");
 
 let employees = [];
+let teamName = ""; //initialize teeamName to a string
+let isManager = false;
+let isEngineer = false;
+
+function inputEmployeeInfo() {
+    let employeeData = {};
+    inquirer.prompt(questions).then(response => {
+        if (response.employeePosition === "Manager") {
+            employeeData = new Manager(response.employeeName, response.employeeID, response.email, response.officeNumber);
+            isManager = true
+        } else if (response.employeePosition === "Engineer") {
+            employeeData = new Engineer(response.employeeName, response.employeeID, response.email, response.gitHubAddress);
+            isEngineer = true;
+        } else {
+            employeeData = new Intern(response.employeeName, response.employeeID, response.email, response.school);
+        }
+        employees.push(employeeData);
+        if (response.nextEmployee) {
+            inputEmployeeInfo();
+        } else {
+
+            if (isManager === false) {
+                console.log("There is no manager on team");
+                inputEmployeeInfo();
+            } else if (isEngineer === false) {
+                console.log("There is no engineers on team");
+                inputEmployeeInfo();
+            } else {
+                fs.writeFile(outputPath, renderHtml(employees, teamName), (er) => {
+                    if (er) return console.log(er);
+                    console.log(`team.html completed...Look for ${outputPath}`);
+                });
+                return
+            }
+        }
+
+
+    });
+};
+
+function getTeamName() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Please enter the name of your team.",
+            name: "teamName",
+            validate: teamName => {
+                if (teamName.length < 1) {
+                    return "Team name is too short";
+                }
+                else {
+                    return true;
+                }
+            },
+        },
+    ]).then(response => {
+        teamName = response.teamName;
+        inputEmployeeInfo();
+    });
+}
+getTeamName();
 
 
 
