@@ -16,6 +16,11 @@ let isManager = false;
 let isEngineer = false;
 
 function inputEmployeeInfo() {
+    // updates "employeeData" with the proper class object after asking inquirer questions
+    // each class element is saved to an object which is created by inserting the inquirer results into the class's perameters
+    // the object called employeeData is pushed into the array "employees"
+    // each time the user decides to add another team member, the variable "employeeData" is cleared but the previous employeeData object is still stored in the array "employees"
+    // after the user finishes adding all the employees, the array "employees" is put into the function "renderHtml" as the first argument
     let employeeData = {};
     inquirer.prompt(questions).then(response => {
         if (response.role === "Manager") {
