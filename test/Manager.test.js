@@ -5,7 +5,7 @@ describe("Manager", () => {
         it("should not accept anything other than a number for 'Office Number' and console log an error", () => {
             //  need a mock for console.log
             // setup
-            let officeNumber = "Not a number";
+            let officeNumber = false;
             let error = "Office number must be a number";
             const mock = jest.spyOn(console, "log");
             mock.mockImplementation( () => {});
