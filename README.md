@@ -5,6 +5,7 @@
 [Description](#description) | [Installation](#installation)
 [Usage](#usage) | [License](#license)
 [Demo](#youtube-demo) | [Other Links](#repo-link)
+[Test](#test) | -
 
 
 ## Description
@@ -25,3 +26,9 @@ https://youtu.be/HbBn4zwJI14
 
 ## Repo Link
 https://github.com/andrewdalba/Template-Engine-Employee-Summary 
+
+## Test
+All tests can be run by using
+```
+npx jest
+```
